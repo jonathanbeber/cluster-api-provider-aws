@@ -171,6 +171,7 @@ func autoConvert_v1alpha1_AWSIAMConfigurationSpec_To_v1beta1_AWSIAMConfiguration
 		return err
 	}
 	out.StackName = in.StackName
+	out.StackTags = *(*map[string]string)(unsafe.Pointer(&in.StackTags))
 	out.Region = in.Region
 	out.EKS = (*v1beta1.EKSConfig)(unsafe.Pointer(in.EKS))
 	out.EventBridge = (*v1beta1.EventBridgeConfig)(unsafe.Pointer(in.EventBridge))
@@ -200,6 +201,7 @@ func autoConvert_v1beta1_AWSIAMConfigurationSpec_To_v1alpha1_AWSIAMConfiguration
 		return err
 	}
 	out.StackName = in.StackName
+	out.StackTags = *(*map[string]string)(unsafe.Pointer(&in.StackTags))
 	out.Region = in.Region
 	out.EKS = (*EKSConfig)(unsafe.Pointer(in.EKS))
 	out.EventBridge = (*EventBridgeConfig)(unsafe.Pointer(in.EventBridge))
