@@ -132,6 +132,7 @@ func RegisterConversions(s *runtime.Scheme) error {
 }
 
 func autoConvert_v1alpha1_AWSIAMConfiguration_To_v1beta1_AWSIAMConfiguration(in *AWSIAMConfiguration, out *v1beta1.AWSIAMConfiguration, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
 	if err := Convert_v1alpha1_AWSIAMConfigurationSpec_To_v1beta1_AWSIAMConfigurationSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
@@ -144,6 +145,7 @@ func Convert_v1alpha1_AWSIAMConfiguration_To_v1beta1_AWSIAMConfiguration(in *AWS
 }
 
 func autoConvert_v1beta1_AWSIAMConfiguration_To_v1alpha1_AWSIAMConfiguration(in *v1beta1.AWSIAMConfiguration, out *AWSIAMConfiguration, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
 	if err := Convert_v1beta1_AWSIAMConfigurationSpec_To_v1alpha1_AWSIAMConfigurationSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}

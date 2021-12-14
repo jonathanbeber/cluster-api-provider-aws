@@ -77,7 +77,7 @@ func (s *Service) createPolicyForRule(input *createPolicyForRuleInput) error {
 				Action:    iamv1.Actions{"sqs:SendMessage"},
 				Resource:  iamv1.Resources{input.QueueArn},
 				Condition: iamv1.Conditions{
-					"ArnEquals": map[string]string{"aws:SourceArn": input.RuleArn},
+					"ArnEquals": map[string][]string{"aws:SourceArn": {input.RuleArn}},
 				},
 			},
 		},

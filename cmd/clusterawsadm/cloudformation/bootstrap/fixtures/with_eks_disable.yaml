@@ -217,7 +217,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: autoscaling.amazonaws.com
+              iam:AWSServiceName:
+              - autoscaling.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling
@@ -225,7 +226,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: elasticloadbalancing.amazonaws.com
+              iam:AWSServiceName:
+              - elasticloadbalancing.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing
@@ -233,7 +235,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: spot.amazonaws.com
+              iam:AWSServiceName:
+              - spot.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot

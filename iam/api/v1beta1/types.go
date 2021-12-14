@@ -89,12 +89,12 @@ type PolicyDocument struct {
 
 // StatementEntry represents each "statement" block in an AWS IAM policy document.
 type StatementEntry struct {
-	Sid          string     `json:",omitempty"`
-	Principal    Principals `json:",omitempty"`
-	NotPrincipal Principals `json:",omitempty"`
+	Sid          string     `json:"Sid,omitempty"`
+	Principal    Principals `json:"Principal,omitempty"`
+	NotPrincipal Principals `json:"NotPrincipal,omitempty"`
 	Effect       Effect     `json:"Effect"`
 	Action       Actions    `json:"Action"`
-	Resource     Resources  `json:",omitempty"`
+	Resource     Resources  `json:"Resource,omitempty"`
 	Condition    Conditions `json:"Condition,omitempty"`
 }
 
@@ -144,7 +144,7 @@ func (identityID *PrincipalID) UnmarshalJSON(data []byte) error {
 }
 
 // Conditions is the map of all conditions in the statement entry.
-type Conditions map[ConditionOperator]interface{}
+type Conditions map[ConditionOperator]map[string][]string
 
 // DeepCopyInto copies the receiver, writing into out. in must be non-nil.
 func (in Conditions) DeepCopyInto(out *Conditions) {

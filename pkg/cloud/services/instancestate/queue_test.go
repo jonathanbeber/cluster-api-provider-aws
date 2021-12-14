@@ -283,7 +283,7 @@ const expectedPolicyJSON = `{
       ],
       "Condition": {
         "ArnEquals": {
-          "aws:SourceArn": "test-cluster-rule-arn"
+          "aws:SourceArn": ["test-cluster-rule-arn"]
         }
       }
     }

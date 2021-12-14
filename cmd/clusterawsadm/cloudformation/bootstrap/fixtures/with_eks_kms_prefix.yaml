@@ -217,7 +217,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: autoscaling.amazonaws.com
+              iam:AWSServiceName:
+              - autoscaling.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling
@@ -225,7 +226,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: elasticloadbalancing.amazonaws.com
+              iam:AWSServiceName:
+              - elasticloadbalancing.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing
@@ -233,7 +235,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: spot.amazonaws.com
+              iam:AWSServiceName:
+              - spot.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot
@@ -269,7 +272,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: eks.amazonaws.com
+              iam:AWSServiceName:
+              - eks.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS
@@ -277,7 +281,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: eks-nodegroup.amazonaws.com
+              iam:AWSServiceName:
+              - eks-nodegroup.amazonaws.com
           Effect: Allow
           Resource:
           - arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup
@@ -285,7 +290,8 @@ Resources:
           - iam:CreateServiceLinkedRole
           Condition:
             StringLike:
-              iam:AWSServiceName: eks-fargate.amazonaws.com
+              iam:AWSServiceName:
+              - eks-fargate.amazonaws.com
           Effect: Allow
           Resource:
           - arn:aws:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate
@@ -341,7 +347,8 @@ Resources:
           - iam:PassRole
           Condition:
             StringEquals:
-              iam:PassedToService: eks.amazonaws.com
+              iam:PassedToService:
+              - eks.amazonaws.com
           Effect: Allow
           Resource:
           - '*'
@@ -350,7 +357,8 @@ Resources:
           - kms:DescribeKey
           Condition:
             ForAnyValue:StringLike:
-              kms:ResourceAliases: alias/custom-prefix-*
+              kms:ResourceAliases:
+              - alias/custom-prefix-*
           Effect: Allow
           Resource:
           - '*'

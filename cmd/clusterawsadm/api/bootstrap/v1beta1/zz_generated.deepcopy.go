@@ -31,6 +31,7 @@ import (
 func (in *AWSIAMConfiguration) DeepCopyInto(out *AWSIAMConfiguration) {
 	*out = *in
 	out.TypeMeta = in.TypeMeta
+	in.ObjectMeta.DeepCopyInto(&out.ObjectMeta)
 	in.Spec.DeepCopyInto(&out.Spec)
 }
 

@@ -173,7 +173,7 @@ func (t Template) ControllersPolicy() *iamv1.PolicyDocument {
 				"iam:CreateServiceLinkedRole",
 			},
 			Condition: iamv1.Conditions{
-				iamv1.StringLike: map[string]string{"iam:AWSServiceName": "autoscaling.amazonaws.com"},
+				iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"autoscaling.amazonaws.com"}},
 			},
 		},
 		{
@@ -185,7 +185,7 @@ func (t Template) ControllersPolicy() *iamv1.PolicyDocument {
 				"iam:CreateServiceLinkedRole",
 			},
 			Condition: iamv1.Conditions{
-				iamv1.StringLike: map[string]string{"iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"},
+				iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"elasticloadbalancing.amazonaws.com"}},
 			},
 		},
 		{
@@ -197,7 +197,7 @@ func (t Template) ControllersPolicy() *iamv1.PolicyDocument {
 				"arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot",
 			},
 			Condition: iamv1.Conditions{
-				iamv1.StringLike: map[string]string{"iam:AWSServiceName": "spot.amazonaws.com"},
+				iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"spot.amazonaws.com"}},
 			},
 		},
 		{
@@ -291,7 +291,7 @@ func (t Template) ControllersPolicyEKS() *iamv1.PolicyDocument {
 			"arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS",
 		},
 		Condition: iamv1.Conditions{
-			iamv1.StringLike: map[string]string{"iam:AWSServiceName": "eks.amazonaws.com"},
+			iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"eks.amazonaws.com"}},
 		},
 	})
 
@@ -304,7 +304,7 @@ func (t Template) ControllersPolicyEKS() *iamv1.PolicyDocument {
 			"arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup",
 		},
 		Condition: iamv1.Conditions{
-			iamv1.StringLike: map[string]string{"iam:AWSServiceName": "eks-nodegroup.amazonaws.com"},
+			iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"eks-nodegroup.amazonaws.com"}},
 		},
 	})
 
@@ -317,7 +317,7 @@ func (t Template) ControllersPolicyEKS() *iamv1.PolicyDocument {
 			"arn:aws:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate",
 		},
 		Condition: iamv1.Conditions{
-			iamv1.StringLike: map[string]string{"iam:AWSServiceName": "eks-fargate.amazonaws.com"},
+			iamv1.StringLike: map[string][]string{"iam:AWSServiceName": {"eks-fargate.amazonaws.com"}},
 		},
 	})
 
@@ -410,8 +410,8 @@ func (t Template) ControllersPolicyEKS() *iamv1.PolicyDocument {
 				"*",
 			},
 			Condition: iamv1.Conditions{
-				"StringEquals": map[string]string{
-					"iam:PassedToService": "eks.amazonaws.com",
+				"StringEquals": map[string][]string{
+					"iam:PassedToService": {"eks.amazonaws.com"},
 				},
 			},
 			Effect: iamv1.EffectAllow,
@@ -426,8 +426,8 @@ func (t Template) ControllersPolicyEKS() *iamv1.PolicyDocument {
 			},
 			Effect: iamv1.EffectAllow,
 			Condition: iamv1.Conditions{
-				"ForAnyValue:StringLike": map[string]string{
-					"kms:ResourceAliases": fmt.Sprintf("alias/%s", t.Spec.EKS.KMSAliasPrefix),
+				"ForAnyValue:StringLike": map[string][]string{
+					"kms:ResourceAliases": {fmt.Sprintf("alias/%s", t.Spec.EKS.KMSAliasPrefix)},
 				},
 			},
 		},
