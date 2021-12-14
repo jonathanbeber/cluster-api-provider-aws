@@ -153,7 +153,8 @@ type Nodes struct {
 // AWSIAMConfiguration controls the creation of AWS Identity and Access Management (IAM) resources for use
 // by Kubernetes clusters and Kubernetes Cluster API Provider AWS.
 type AWSIAMConfiguration struct {
-	metav1.TypeMeta `json:",inline"`
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 
 	Spec AWSIAMConfigurationSpec `json:"spec,omitempty"`
 }
